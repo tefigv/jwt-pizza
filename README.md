@@ -151,4 +151,4 @@ export default function App() {
 
 [HeroIcons](https://heroicons.com/) - MIT license
 
-[![CI Pipeline](https://github.com/YOURACCOUNTNAMEHERE/jwt-pizza/actions/workflows/ci.yml/badge.svg)](https://github.com/YOURACCOUNTNAMEHERE/jwt-pizza/actions/workflows/ci.yml)
+[![CI Pipeline](https://github.com/tefigv/jwt-pizza/actions/workflows/ci.yml/badge.svg)](https://github.com/tefigv/jwt-pizza/actions/workflows/ci.yml)
