@@ -92,5 +92,5 @@ export default function App() {
       <Footer navItems={navItems} />
     </div>
   );
-   //this is a commment 1
+   //this is a commment 2
 }
