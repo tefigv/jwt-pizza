@@ -31,7 +31,7 @@ jobs:
         run: |
           npm ci && npm run build
 
-      - name: Update pages artifact
+      - name: Update dist artifact
         uses: actions/upload-artifact@v4
         with:
           name: package
@@ -39,8 +39,8 @@ jobs:
   deploy:
     needs: build
     permissions:
-      pages: write
       id-token: write
+    runs-on: ubuntu-latest
   env:
     version: ${{needs.build.outputs.version}}
   steps:
@@ -54,11 +54,12 @@ jobs:
     - name: Download dist artifact
       uses: actions/download-artifact@v4
       with:
-       name: package
-       path: dist/
+        name: package
+        path: dist/
 
     - name: Push to AWS S3
       run: |
-       echo Deploying $version
-       aws s3 cp dist s3://${{ secrets.APP_BUCKET }} --recursive
-       aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/*"
+        echo Deploying $version
+        aws s3 cp dist s3://${{ secrets.APP_BUCKET }} --recursive
+        aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/*"
+
